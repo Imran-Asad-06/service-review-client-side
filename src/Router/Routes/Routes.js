@@ -40,19 +40,19 @@ const router = createBrowserRouter([
             {
                 path: '/myReview',
                 element: <PrivateRoute><MyReviews></MyReviews> </PrivateRoute>,
-                loader:()=>fetch(`http://localhost:5000/reviews`),
+                loader:()=>fetch(`https://photography-assignment-server-phi.vercel.app/reviews`),
                 
             },
             
             {
                 path:'/service/:id',
                 element: <Details></Details>,
-                loader:({params})=>fetch(`http://localhost:5000/allServices/${params.id}`),
+                loader:({params})=>fetch(`https://photography-assignment-server-phi.vercel.app/allServices/${params.id}`),
                
             },
             {
                 path: '/addServices',
-                loader:()=>fetch(`http://localhost:5000/allServices`),
+                loader:()=>fetch(`https://photography-assignment-server-phi.vercel.app/allServices`),
                 element: <PrivateRoute><AddServices></AddServices></PrivateRoute>
             },
 
