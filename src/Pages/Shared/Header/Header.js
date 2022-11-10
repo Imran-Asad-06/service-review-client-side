@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../Assets/logo.png'
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+
+    const {user,logOut} = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
     const menuItem1 = <>
         <li><Link to='/'>Home</Link></li>
 
@@ -10,7 +20,7 @@ const Header = () => {
      const menuItem2 = <>
      <li><Link to='/blog'>Blog</Link></li>
      
- </>
+    </>
     return (
         <div className="navbar bg-emerald-400 mb-4">
             <div className="navbar-start">
@@ -34,8 +44,41 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/signup' className="btn mx-2  bg-emerald-400">SignUp</Link>
-                <Link to='/login' className="btn  bg-emerald-400">Login</Link>
+                {
+                     
+                        user?.uid ?
+                            <>
+                               
+                                <>
+                                <button><Link className='mr-3' to='/addServices'>Add Services</Link></button>
+                                <button><Link className='mr-3' to='/myReview'>My Review</Link></button>
+
+                                <button className="btn btn-sm" onClick={handleLogOut}>Log out</button>
+                                <span>{user?.displayName}</span>
+                               
+
+                                </>
+                                
+                            </>
+                            :
+                            <>
+                                <Link to='/signup' className="btn mx-2  bg-emerald-400">SignUp</Link>
+                                <Link to='/login' className="btn  bg-emerald-400">Login</Link>
+                            </>
+
+
+                        
+                    }
+                    {
+                        user?.photoURL ?
+                        <img  style={{ height: '30px' }} src={user?.photoURL} alt="" />
+                            
+                        : <FaUser></FaUser>
+                    }
+                    
+
+                    
+                
             </div>
         </div>
     );
