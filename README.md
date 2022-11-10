@@ -1,3 +1,34 @@
+# Photography Website:
+livelink: https://photography-assignment-6bebd.web.app/
+
+
+# An React based project..
+# Authentication enabled by firebase
+# Backend is developed by nodejs ans express js and mongodb
+# Tailwind and daisyui used with row css ...
+# Mobile responsive
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
