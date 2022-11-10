@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import ServiceCard from '../Services/ServiceCard';
 import './services.css'
 
-const Services = () => {
+const AllService = () => {
     const [services, setServices] = useState([]);
     
     useEffect( () =>{
-        fetch('http://localhost:5000/services')
+        fetch('http://localhost:5000/allServices')
         .then(res =>res.json())
         .then(data => setServices(data))
     }, []);
@@ -33,10 +33,10 @@ const Services = () => {
            
         </div>
         <div  className='mt-5 seeAll'> 
-        <Link to='/allServices'><button className="btn btn-success">See All</button></Link>
+        <Link to='/addServices' ><button className="btn btn-success">Add Service</button></Link>
         </div>
     </div>
     );
 };
 
-export default Services;
+export default AllService;
